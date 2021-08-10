@@ -1,5 +1,5 @@
 //for our cocktail ingredient api
-//with the juice
+//with Alcohol
 fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic", {
   method: "GET",
   credentials: "same-origin",
@@ -14,7 +14,7 @@ fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic", {
     console.log(data);
   });
 
-//without the juice
+//without alcohol
 fetch(
   "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic",
   {
