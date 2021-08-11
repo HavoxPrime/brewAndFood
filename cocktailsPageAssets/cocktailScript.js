@@ -1,7 +1,6 @@
 //Accessing Sidebar Link Elements
-var sidebarLink1El = $("#sidebar-link1");
-var sidebarLink2El = $("#sidebar-link2");
-var sidebarLink3El = $("#sidebar-link3");
+var sidebarBtnEl = $("#sidebar-link1");
+var sidebarBtn2El = $("#sidebar-link2");
 
 //Accessing Main Popular Recipe Card Elements
 var mainPopularImgEl = $("#main-popular-img");
