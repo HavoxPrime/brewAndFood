@@ -1,6 +1,10 @@
+.navbar .container-fluid {
+  justify-content: flex-start;
+}
 .title {
-  font-size: 55px;
+  font-size: 90px;
   font-weight: 650;
+  padding-left: 30px;
 }
 
 .card {
@@ -27,4 +31,9 @@
 
 .random {
   font-weight: 600;
+}
+
+#header-img {
+  width: 200px;
+  height: 230px;
 }
