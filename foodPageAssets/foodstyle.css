@@ -1,0 +1,30 @@
+.title {
+    font-size: 55px;
+    font-weight: 650;
+  }
+  
+  .card {
+    display: inline-flex;
+  }
+  
+  .userInput {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .container-fluid {
+    display: flex;
+  }
+  
+  .sidebar {
+    justify-content: flex-start;
+    font-size: 18px;
+  }
+  
+  .main {
+    font-weight: 600;
+  }
+  
+  .random {
+    font-weight: 600;
+  }
