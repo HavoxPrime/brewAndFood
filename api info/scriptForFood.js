@@ -71,4 +71,22 @@ fetch(
     console.log(data);
   });
 
+//random recipies
+fetch(
+  "https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941&random=true",
+  {
+    method: "GET",
+    credentials: "same-origin",
+    redirect: "follow",
+    cache: "no-store",
+  }
+)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log("All random");
+    console.log(data);
+  });
+
 // images can be found under OBJNAME.hits[i].recipe.image (example :rhubarb juice) https://www.edamam.com/web-img/f14/f1492ce026ed044bb4fa847a56de096f.jpg
