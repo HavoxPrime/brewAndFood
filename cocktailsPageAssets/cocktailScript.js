@@ -1,6 +1,5 @@
 //Accessing Sidebar Link Elements
-var sidebarBtnEl = $("#sidebar-link1");
-var sidebarBtn2El = $("#sidebar-link2");
+var alcoholDropdownEl = $("#alcohol-type");
 
 //Accessing Main Popular Recipe Card Elements
 var mainPopularImgEl = $("#main-popular-img");

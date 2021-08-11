@@ -25,6 +25,12 @@
   font-size: 18px;
 }
 
+.selection-text {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 450;
+}
+
 .main {
   font-weight: 600;
 }
