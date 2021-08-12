@@ -83,21 +83,25 @@ fetch(
     console.log(data);
   });
 
-// get ingredient by name (example: vodka)
-//this is a short discription of the ingredient
-fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?i=Vodka", {
-  method: "GET",
-  credentials: "same-origin",
-  redirect: "follow",
-  cache: "no-store",
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("The ingredient vodka");
+var drinkByAlcoholTypeAPI =
+  "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+  alcoholDropdownEl.val();
+
+function loadInitial(event) {
+  event.preventDefault();
+  $.ajax({
+    url: drinkByAlcoholTypeAPI,
+    method: "GET",
+  }).then(function (data) {
+    if (alcoholDropdownEl.val() == "Non-Alcoholic") {
+      drinkByAlcoholTypeAPI =
+        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
+    }
     console.log(data);
   });
+}
+
+alcoholDropdownEl.on("change", loadInitial);
 
 // get drinks by ingredient (example: vodka)
 //this is lists drinks based on the ingredients
