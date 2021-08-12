@@ -10,18 +10,8 @@ const fourSmall = [
 ];
 const botBox = $("#random-recipe");
 var cuisineBntPresed = $(".cuisineSort");
-// for (i = 0; i < cuisineBntPresed.length; i++) {
-//   cuisineBntPresed[i].addEventListener("click", sortRecipes);
-// }
 var dayBntPresed = $(".daySort");
-// for (i = 0; i < dayBntPresed.length; i++) {
-//   dayBntPresed[i].addEventListener("click", sortRecipes);
-// }
 var timeBntPresed = $(".timeSort");
-// for (i = 0; i < timeBntPresed.length; i++) {
-//   timeBntPresed[i].addEventListener("click", sortRecipes);
-// }
-// fetching data for random recipies
 fetch(
   "https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941&random=true",
   {
@@ -43,15 +33,6 @@ fetch(
 
 // sets up the page with recipes
 function setPage() {
-  for (i = 0; i < timeBntPresed.length; i++) {
-    timeBntPresed[i].addEventListener("click", sortRecipes);
-  }
-  for (i = 0; i < dayBntPresed.length; i++) {
-    dayBntPresed[i].addEventListener("click", sortRecipes);
-  }
-  for (i = 0; i < cuisineBntPresed.length; i++) {
-    cuisineBntPresed[i].addEventListener("click", sortRecipes);
-  }
   if (sortedList !== undefined) {
     bigBox
       .children()
@@ -156,6 +137,16 @@ function setPage() {
     .children(".card-img-top")
     .attr("src", allRand.hits[9].recipe.image)
     .css("max-width", "30%");
+
+  for (i = 0; i < timeBntPresed.length; i++) {
+    timeBntPresed[i].addEventListener("click", sortRecipes);
+  }
+  for (i = 0; i < dayBntPresed.length; i++) {
+    dayBntPresed[i].addEventListener("click", sortRecipes);
+  }
+  for (i = 0; i < cuisineBntPresed.length; i++) {
+    cuisineBntPresed[i].addEventListener("click", sortRecipes);
+  }
 }
 
 // sorts on click
