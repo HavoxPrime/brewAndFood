@@ -127,7 +127,7 @@ function sortRecipes(event) {
       });
   }
 }
-
+// sets up the page with recipes
 function setPage() {
   if (sortedList !== undefined) {
     bigBox
@@ -143,7 +143,8 @@ function setPage() {
     bigBox.children().children(".card-text").text(boxText);
     bigBox
       .children()
-      .append("<a href='" + sortedList.hits[0].recipe.url + "'> LinkHere </a>");
+      .children(".card-link")
+      .attr("href", sortedList.hits[0].recipe.url);
     bigBox
       .children(".card-img-top")
       .attr("src", sortedList.hits[0].recipe.image)
@@ -187,7 +188,8 @@ function setPage() {
     bigBox.children().children(".card-text").text(boxText);
     bigBox
       .children()
-      .append("<a href='" + allRand.hits[0].recipe.url + "'> LinkHere </a>");
+      .children(".card-link")
+      .attr("href", allRand.hits[0].recipe.url);
     bigBox
       .children(".card-img-top")
       .attr("src", allRand.hits[0].recipe.image)
@@ -225,7 +227,8 @@ function setPage() {
   botBox.children().children(".card-text").text(boxText);
   botBox
     .children()
-    .append("<a href='" + allRand.hits[9].recipe.url + "'> LinkHere </a>");
+    .children(".card-link")
+    .attr("href", allRand.hits[9].recipe.url);
   botBox
     .children(".card-img-top")
     .attr("src", allRand.hits[9].recipe.image)
