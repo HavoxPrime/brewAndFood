@@ -10,19 +10,18 @@ const fourSmall = [
 ];
 const botBox = $("#random-recipe");
 var cuisineBntPresed = $(".cuisineSort");
-for (i = 0; i < cuisineBntPresed.length; i++) {
-  cuisineBntPresed[i].addEventListener("click", sortRecipes);
-}
+// for (i = 0; i < cuisineBntPresed.length; i++) {
+//   cuisineBntPresed[i].addEventListener("click", sortRecipes);
+// }
 var dayBntPresed = $(".daySort");
-for (i = 0; i < dayBntPresed.length; i++) {
-  dayBntPresed[i].addEventListener("click", sortRecipes);
-}
+// for (i = 0; i < dayBntPresed.length; i++) {
+//   dayBntPresed[i].addEventListener("click", sortRecipes);
+// }
 var timeBntPresed = $(".timeSort");
-for (i = 0; i < timeBntPresed.length; i++) {
-  timeBntPresed[i].addEventListener("click", sortRecipes);
-}
-// fetching data
-//random recipies
+// for (i = 0; i < timeBntPresed.length; i++) {
+//   timeBntPresed[i].addEventListener("click", sortRecipes);
+// }
+// fetching data for random recipies
 fetch(
   "https://api.edamam.com/api/recipes/v2?type=public&q=recipe&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941&random=true",
   {
@@ -42,93 +41,17 @@ fetch(
     setPage();
   });
 
-function sortRecipes(event) {
-  console.log(event.toElement.firstChild.textContent);
-  var chosenSort = event.toElement.firstChild.textContent;
-
-  // for time to make buttons
-  if (event.toElement.attributes[0].textContent.includes("timeSort")) {
-    console.log("time button");
-    if (chosenSort.length === 10) {
-      chosenSort = chosenSort.slice(0, 2);
-    } else if (chosenSort.length === 9) {
-      chosenSort = chosenSort.slice(0, 1);
-    }
-    // get by time
-    fetch(
-      "https://api.edamam.com/api/recipes/v2?type=public&time=" +
-        chosenSort +
-        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941",
-      {
-        method: "GET",
-        credentials: "same-origin",
-        redirect: "follow",
-        cache: "no-store",
-      }
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(chosenSort + " min foods");
-        sortedList = data;
-        console.log(data);
-        setPage();
-      });
-  }
-  // for cuisine buttons
-  else if (event.toElement.attributes[0].textContent.includes("cuisineSort")) {
-    console.log("cuisine button");
-    //by cuisine
-    fetch(
-      "https://api.edamam.com/api/recipes/v2?type=public&cuisineType=" +
-        chosenSort +
-        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941&random=true",
-      {
-        method: "GET",
-        credentials: "same-origin",
-        redirect: "follow",
-        cache: "no-store",
-      }
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(chosenSort + " foods");
-        sortedList = data;
-        console.log(data);
-        setPage();
-      });
-  }
-  // for time of day buttons
-  else if (event.toElement.attributes[0].textContent.includes("daySort")) {
-    console.log("day button");
-    //by meal type
-    fetch(
-      "https://api.edamam.com/api/recipes/v2?type=public&mealType=" +
-        chosenSort +
-        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941",
-      {
-        method: "GET",
-        credentials: "same-origin",
-        redirect: "follow",
-        cache: "no-store",
-      }
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(chosenSort + " foods");
-        sortedList = data;
-        console.log(data);
-        setPage();
-      });
-  }
-}
 // sets up the page with recipes
 function setPage() {
+  for (i = 0; i < timeBntPresed.length; i++) {
+    timeBntPresed[i].addEventListener("click", sortRecipes);
+  }
+  for (i = 0; i < dayBntPresed.length; i++) {
+    dayBntPresed[i].addEventListener("click", sortRecipes);
+  }
+  for (i = 0; i < cuisineBntPresed.length; i++) {
+    cuisineBntPresed[i].addEventListener("click", sortRecipes);
+  }
   if (sortedList !== undefined) {
     bigBox
       .children()
@@ -233,4 +156,91 @@ function setPage() {
     .children(".card-img-top")
     .attr("src", allRand.hits[9].recipe.image)
     .css("max-width", "30%");
+}
+
+// sorts on click
+function sortRecipes(event) {
+  console.log(event.toElement.firstChild.textContent);
+  var chosenSort = event.toElement.firstChild.textContent;
+
+  // for time to make buttons
+  if (event.toElement.attributes[0].textContent.includes("timeSort")) {
+    console.log("time button");
+    if (chosenSort.length === 10) {
+      chosenSort = chosenSort.slice(0, 2);
+    } else if (chosenSort.length === 9) {
+      chosenSort = chosenSort.slice(0, 1);
+    }
+    // get by time
+    fetch(
+      "https://api.edamam.com/api/recipes/v2?type=public&time=" +
+        chosenSort +
+        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941",
+      {
+        method: "GET",
+        credentials: "same-origin",
+        redirect: "follow",
+        cache: "no-store",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(chosenSort + " min foods");
+        sortedList = data;
+        console.log(data);
+        setPage();
+      });
+  }
+  // for cuisine buttons
+  else if (event.toElement.attributes[0].textContent.includes("cuisineSort")) {
+    console.log("cuisine button");
+    //by cuisine
+    fetch(
+      "https://api.edamam.com/api/recipes/v2?type=public&cuisineType=" +
+        chosenSort +
+        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941&random=true",
+      {
+        method: "GET",
+        credentials: "same-origin",
+        redirect: "follow",
+        cache: "no-store",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(chosenSort + " foods");
+        sortedList = data;
+        console.log(data);
+        setPage();
+      });
+  }
+  // for time of day buttons
+  else if (event.toElement.attributes[0].textContent.includes("daySort")) {
+    console.log("day button");
+    //by meal type
+    fetch(
+      "https://api.edamam.com/api/recipes/v2?type=public&mealType=" +
+        chosenSort +
+        "&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941",
+      {
+        method: "GET",
+        credentials: "same-origin",
+        redirect: "follow",
+        cache: "no-store",
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(chosenSort + " foods");
+        sortedList = data;
+        console.log(data);
+        setPage();
+      });
+  }
 }
