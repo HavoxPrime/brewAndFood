@@ -35,7 +35,7 @@ fetch(
     console.log(data);
   });
 
-//by time (example : lunch)
+//by meal type (example : lunch)
 fetch(
   "https://api.edamam.com/api/recipes/v2?type=public&mealType=lunch&app_id=fb075c41&app_key=1916b0e913f376b4311b0b2c82a39941",
   {
