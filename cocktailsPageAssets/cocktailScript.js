@@ -4,46 +4,34 @@ var alcoholDropdownEl = $("#alcohol-type");
 //Accessing Main Popular Recipe Card Elements
 var mainPopularImgEl = $("#main-popular-img");
 var mainPopularTitleEl = $("#main-popular-title");
-var mainPopularList1El = $("#main-popular-list1");
-var mainPopularList2El = $("#main-popular-list2");
-var mainPopularLinkEl = $("#main-popular-recipe-link");
+var mainPopularList1El = $("#main-popular-category");
 
 //Accessing Popular Recipe Card Elements
 
 //Card 1
 var popular1ImgEl = $("#popular1-img");
 var popular1TitleEl = $("#popular1-title");
-var popular1List1El = $("#popular1-list1");
-var popular1List2El = $("#popular1-list2");
-var popular1LinkEl = $("#popular1-recipe-link");
+var popular1List1El = $("#popular1-category");
 
 //Card 2
 var popular2ImgEl = $("#popular2-img");
 var popular2TitleEl = $("#popular2-title");
-var popular2List1El = $("#popular2-list1");
-var popular2List2El = $("#popular2-list2");
-var popular2LinkEl = $("#popular2-recipe-link");
+var popular2List1El = $("#popular2-category");
 
 //Card 3
 var popular3ImgEl = $("#popular3-img");
 var popular3TitleEl = $("#popular3-title");
-var popular3List1El = $("#popular3-list1");
-var popular3List2El = $("#popular3-list2");
-var popular3LinkEl = $("#popular3-recipe-link");
+var popular3List1El = $("#popular3-category");
 
 //Card 4
 var popular4ImgEl = $("#popular4-img");
 var popular4TitleEl = $("#popular4-title");
-var popular4List1El = $("#popular4-list1");
-var popular4List2El = $("#popular4-list2");
-var popular4LinkEl = $("#popular4-recipe-link");
+var popular4List1El = $("#popular4-category");
 
 //Accessing Random Recipe Card Elements
 var randomImgEl = $("#random-img");
 var randomTitleEl = $("#random-title");
-var randomList1El = $("#random-list1");
-var randomList2El = $("#random-list2");
-var randomLinkEl = $("#random-recipe-link");
+var randomList1El = $("#random-category");
 
 //waiting for variables from the html!!!
 //declare variables!!!!
@@ -83,22 +71,83 @@ fetch(
     console.log(data);
   });
 
-var drinkByAlcoholTypeAPI =
-  "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
-  alcoholDropdownEl.val();
+var drinkByAlcoholTypeAPI;
 
 function loadInitial(event) {
   event.preventDefault();
+
+  if (alcoholDropdownEl.val() == "non-alcoholic") {
+    drinkByAlcoholTypeAPI =
+      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
+  } else {
+    drinkByAlcoholTypeAPI =
+      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+      alcoholDropdownEl.val();
+  }
   $.ajax({
     url: drinkByAlcoholTypeAPI,
     method: "GET",
   }).then(function (data) {
-    if (alcoholDropdownEl.val() == "Non-Alcoholic") {
-      drinkByAlcoholTypeAPI =
-        "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
+    function randomSuggestedDrinks() {
+      randomDrinkOptionsAfterInput = data.drinks;
+      randomDrinkAfterInput =
+        randomDrinkOptionsAfterInput[
+          Math.floor(Math.random() * randomDrinkOptionsAfterInput.length)
+        ];
     }
-    console.log(data);
+    for (i = 0; i < 5; i++) {
+      randomSuggestedDrinks();
+
+      if (drinksAfterInput.includes(randomDrinkAfterInput)) {
+        i--;
+        return;
+      } else drinksAfterInput.push(randomDrinkAfterInput);
+    }
+    console.log(drinksAfterInput);
+
+    for (i = 0; i < 5; i++) {
+      drinkImages.push(drinksAfterInput[i].strDrinkThumb);
+    }
+
+    mainPopularImgEl.attr("src", drinkImages[0]);
+    popular1ImgEl.attr("src", drinkImages[1]);
+    popular2ImgEl.attr("src", drinkImages[2]);
+    popular3ImgEl.attr("src", drinkImages[3]);
+    popular4ImgEl.attr("src", drinkImages[4]);
+
+    //drink name
+    for (i = 0; i < 5; i++) {
+      drinkName.push(drinksAfterInput[i].strDrink);
+    }
+
+    mainPopularTitleEl.text( drinkName[0]);
+    popular1TitleEl.text( drinkName[1]);
+    popular2TitleEl.text( drinkName[2]);
+    popular3TitleEl.text( drinkName[3]);
+    popular4TitleEl.text(drinkName[4]);
+
+    //drink id variable
+    for (i = 0; i < 5; i++) {
+      drinkId.push(drinksAfterInput[i].idDrink);
+    }
+    var idDrink = drinkId
+    
+    console.log(idDrink)
+
+    // console.log(data.drinks);
+    // console.log(data.drinks.length);
+    // console.log(data.drinks[0]);
+    // console.log(data.drinks[0]);
+    // console.log(data.drinks[0].idDrink);
+    // console.log(data.drinks[0].strDrink);
+
+    // function userSelectsAlcoholType()
+    // userSelectsAlcoholType();
   });
+  drinksAfterInput = [];
+  drinkImages = [];
+  drinkName = [];
+  drinkId = []
 }
 
 alcoholDropdownEl.on("change", loadInitial);
