@@ -115,6 +115,25 @@ function loadInitial(event) {
     popular3ImgEl.attr("src", drinkImages[3]);
     popular4ImgEl.attr("src", drinkImages[4]);
 
+    //drink name
+    for (i = 0; i < 5; i++) {
+      drinkName.push(drinksAfterInput[i].strDrink);
+    }
+
+    mainPopularTitleEl.text( drinkName[0]);
+    popular1TitleEl.text( drinkName[1]);
+    popular2TitleEl.text( drinkName[2]);
+    popular3TitleEl.text( drinkName[3]);
+    popular4TitleEl.text(drinkName[4]);
+
+    //drink id variable
+    for (i = 0; i < 5; i++) {
+      drinkId.push(drinksAfterInput[i].idDrink);
+    }
+    var idDrink = drinkId
+    
+    console.log(idDrink)
+
     // console.log(data.drinks);
     // console.log(data.drinks.length);
     // console.log(data.drinks[0]);
@@ -127,6 +146,8 @@ function loadInitial(event) {
   });
   drinksAfterInput = [];
   drinkImages = [];
+  drinkName = [];
+  drinkId = []
 }
 
 alcoholDropdownEl.on("change", loadInitial);
