@@ -31,34 +31,40 @@
         <!-- Sidebar -->
   
       <div class = "sidebar">
+        <!-- Dropdown menu for Cuisine Type -->
           <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-info dropdown-toggle mb-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
               Cuisine Type
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item sortBtn" type="button">Italian</button></li>
-              <li><button class="dropdown-item sortBtn" type="button">Mexican</button></li>
-              <li><button class="dropdown-item sortBtn" type="button">Chinese</button></li>
-              <li><button class="dropdown-item sortBtn" type="button">American</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button">Italian</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button">Mexican</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button">Chinese</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button">American</button></li>
             </ul>
           </div>
-        <!-- </li> -->
-        <!-- <li class="nav-item"> -->
+<!-- Dropdown menu for meal type -->
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-info dropdown-toggle mb-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
               Time of Day
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item sortBtn" type="button">Breakfast</button></li>
-              <li><button class="dropdown-item sortBtn" type="button">Lunch</button></li>
-              <li><button class="dropdown-item sortBtn" type="button">Dinner</button></li>
+              <li><button class="dropdown-item daySort" type="button">Breakfast</button></li>
+              <li><button class="dropdown-item daySort" type="button">Lunch</button></li>
+              <li><button class="dropdown-item daySort" type="button">Dinner</button></li>
             </ul>
           </div>
-        <!-- </li> -->
-        <!-- <li class="nav-item"> -->
-          
-        <!-- </li> -->
-      <!-- </ul> -->
+<!-- Dropdown menu for cooking time -->
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle mb-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Cooking Times
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item timeSort" type="button">5 Minutes</button></li>
+              <li><button class="dropdown-item timeSort" type="button">10 Minutes</button></li>
+              <li><button class="dropdown-item timeSort" type="button">30 Minutes</button></li>
+            </ul>
+          </div>
     </div>
   
         <!-- Main Featured Recipe -->
