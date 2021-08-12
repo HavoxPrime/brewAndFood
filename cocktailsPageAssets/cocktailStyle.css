@@ -39,7 +39,16 @@
   font-weight: 600;
 }
 
-#header-img {
-  width: 200px;
-  height: 230px;
+#main-popular-img {
+  width: 350px;
+  height: 300px;
+}
+#popular1-img,
+#popular2-img,
+#popular3-img,
+#popular4-img {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  padding: 5px;
 }
