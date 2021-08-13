@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Food Recipes</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,20 +15,15 @@
   </head>
   <body>
     <body>
+    
       <!-- Header -->
   
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="title navbar-brand" href="#">
-            <img
-              src="/docs/5.1/assets/brand/bootstrap-logo.svg"
-              alt=""
-              width="30"
-              height="24"
-              class="d-inline-block align-text-top"
-            />
-            Recipes
-          </a>
+      <nav class="navbar navbar-light bg-primary bg-opacity-75">
+        <div class="container-fluid justify-content-center">
+          <!-- <a class="title navbar-brand" href="#">
+            Food Recipes
+          </a> -->
+          <h1 class="text-light">Food Recipes</h1>
         </div>
       </nav>
   
@@ -37,33 +32,54 @@
         <!-- Sidebar -->
   
       <div class = "sidebar">
-         <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
+        <!-- Dropdown menu for Cuisine Type -->
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle mb-1 mt-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Cuisine Type
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item cuisineSort" type="button" data-value="Italian">Italian</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button" data-value="Mexican">Mexican</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button" data-value="Chinese">Chinese</button></li>
+              <li><button class="dropdown-item cuisineSort" type="button" data-value="American">American</button></li>
+            </ul>
+          </div>
+<!-- Dropdown menu for meal type -->
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle mb-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Time of Day
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item daySort" type="button" data-value="Breakcast">Breakfast</button></li>
+              <li><button class="dropdown-item daySort" type="button" data-value="Lunch">Lunch</button></li>
+              <li><button class="dropdown-item daySort" type="button" data-value="Dinner">Dinner</button></li>
+            </ul>
+          </div>
+<!-- Dropdown menu for cooking time -->
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle mb-1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Cooking Times
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item timeSort" type="button" data-value="30">30 Minutes</button></li>
+              <li><button class="dropdown-item timeSort" type="button" data-value="45">45 Minutes</button></li>
+              <li><button class="dropdown-item timeSort" type="button" data-value="60">60 Minutes</button></li>
+            </ul>
+          </div>
     </div>
   
         <!-- Main Featured Recipe -->
   
         <div>
         <div id="main-recipe" class="card mb-3">
-          <img src="..." class="card-img-top" alt="..." />
+          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h1 class="main card-title">Popular</h1>
             <p class="card-text">
               This is a wider card with supporting text below as a natural lead-in
               to additional content. This content is a little bit longer.
             </p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
+            <a href="#" class="card-link">Recipe Link</a>
           </div>
         </div>
   
@@ -71,85 +87,77 @@
   
         <div class="col userInput">
           <div id="alt-recipe-1" class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
+            <img src="" class="card-img-top" alt="..." />
             <div class="card-body">
               <h2 class="card-title">Popular</h2>
-              <p class="card-text">
+              <!-- <p class="card-text">
                 Some quick example text to build on the card title and make up the
                 bulk of the card's content.
-              </p>
+              </p> -->
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
+              <li class="list-group-item slot1">An item</li>
+              <li class="list-group-item slot2">A second item</li>
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <a href="#" class="card-link">Recipe Link</a>
             </div>
           </div>
   
     
           <div id="alt-recipe-2" class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
+            <img src="" class="card-img-top" alt="..." />
             <div class="card-body">
               <h2 class="card-title">Popular</h2>
-              <p class="card-text">
+              <!-- <p class="card-text">
                 Some quick example text to build on the card title and make up the
                 bulk of the card's content.
-              </p>
+              </p> -->
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
+              <li class="list-group-item slot1">An item</li>
+              <li class="list-group-item slot2">A second item</li>
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <a href="#" class="card-link">Recipe Link</Link></a>
             </div>
             </div>
   
        
             <div id="alt-recipe-3"class="card" style="width: 18rem">
-              <img src="..." class="card-img-top" alt="..." />
+              <img src="" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h2 class="card-title">Popular</h2>
-                <p class="card-text">
+                <!-- <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
-                </p>
+                </p> -->
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
+                <li class="list-group-item slot1">An item</li>
+                <li class="list-group-item slot2">A second item</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a href="#" class="card-link">Recipe Link</a>
               </div>
               </div>
   
    
               <div id="alt-recipe-4"class="card" style="width: 18rem">
-                <img src="..." class="card-img-top" alt="..." />
+                <img src="" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h2 class="card-title">Popular</h2>
-                  <p class="card-text">
+                  <!-- <p class="card-text">
                     Some quick example text to build on the card title and make up
                     the bulk of the card's content.
-                  </p>
+                  </p> -->
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item slot1">An item</li>
+                  <li class="list-group-item slot2">A second item</li>
                 </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <a href="#" class="card-link">Recipe Link</a>
                 </div>
               </div>
             </div>
@@ -158,26 +166,26 @@
   
         <!-- Random Recipe Card -->
         <div id="random-recipe" class="card mb-3">
-          <img src="..." class="card-img-top" alt="..." />
+          <img src="" class="card-img-top" alt="..." />
           <div class="card-body">
             <h2 class="random card-title">Random</h2>
             <p class="card-text">
               This is a wider card with supporting text below as a natural lead-in
               to additional content. This content is a little bit longer.
             </p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
+            <a href="#" class="card-link">Recipe Link</a>
           </div>
         </div>
       </div>
     </div>
   </div>
   
+  
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="./foodPageAssets/food.js"></script>
   </body>
 </html>
