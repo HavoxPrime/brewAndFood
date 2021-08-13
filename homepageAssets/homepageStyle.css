@@ -8,16 +8,18 @@
 
 body {
   background-color: var(--grey);
+  font-family: "Archivo", sans-serif;
 }
 
 .display-1 {
   margin-bottom: 50px;
   text-align: center;
-  font-size: 90px;
+  font-size: 100px;
   font-weight: 600;
   padding: 20px;
   background-color: var(--darkBlue);
   color: white;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 .page {
@@ -31,6 +33,7 @@ body {
   padding: 70px;
   margin: 10px;
   font-size: 65px;
+  font-weight: 600;
 }
 
 .food-btn {
