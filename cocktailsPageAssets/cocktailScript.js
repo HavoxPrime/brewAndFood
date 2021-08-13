@@ -15,7 +15,6 @@ var popular1TitleEl = $("#popular1-title");
 var popular1ListEl = $("#popular1-category");
 var popular1InstructionsEl = $("#popular1-description");
 
-
 //Card 2
 var popular2ImgEl = $("#popular2-img");
 var popular2TitleEl = $("#popular2-title");
@@ -28,7 +27,6 @@ var popular3TitleEl = $("#popular3-title");
 var popular3ListEl = $("#popular3-category");
 var popular3InstructionsEl = $("#popular3-description");
 
-
 //Card 4
 var popular4ImgEl = $("#popular4-img");
 var popular4TitleEl = $("#popular4-title");
@@ -40,45 +38,6 @@ var randomImgEl = $("#random-img");
 var randomTitleEl = $("#random-title");
 var randomListEl = $("#random-category");
 var randomInstructionsEl = $("#random-description");
-
-
-//waiting for variables from the html!!!
-//declare variables!!!!
-var alchoholicDrinks = $("Alchoholic");
-var nonAlchoholicDrinks = $("Non_Alchoholic");
-
-//alchoholic drinks
-fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic", {
-  method: "GET",
-  credentials: "same-origin",
-  redirect: "follow",
-  cache: "no-store",
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("Alchoholic");
-    console.log(data);
-  });
-
-// non-alchoholic drincks
-fetch(
-  "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic",
-  {
-    method: "GET",
-    credentials: "same-origin",
-    redirect: "follow",
-    cache: "no-store",
-  }
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("Non_Alchoholic");
-    console.log(data);
-  });
 
 var randomRecipeLink;
 
@@ -117,7 +76,6 @@ async function initialLoad() {
 for (i = 0; i < 6; i++) {
   initialLoad();
 }
-console.log(initialRandomInstructions);
 
 function generateInitialContent() {
   mainPopularImgEl.attr("src", initialRandomImgs[0]);
@@ -150,9 +108,18 @@ function generateInitialContent() {
 }
 
 var drinkByAlcoholTypeAPI;
+var drinksAfterInput = [];
+var drinkImages = [];
+var drinkName = [];
+var drinkId = [];
+
+var mainDetailsById;
+var popular1DetailsById;
+var popular2DetailsById;
+var popular3DetailsById;
+var popular4DetailsById;
 
 function loadOnClick(event) {
-
   event.preventDefault();
 
   if (alcoholDropdownEl.val() == "non-alcoholic") {
@@ -182,7 +149,6 @@ function loadOnClick(event) {
         return;
       } else drinksAfterInput.push(randomDrinkAfterInput);
     }
-    console.log(drinksAfterInput);
 
     for (i = 0; i < 5; i++) {
       drinkImages.push(drinksAfterInput[i].strDrinkThumb);
@@ -194,8 +160,6 @@ function loadOnClick(event) {
     popular3ImgEl.attr("src", drinkImages[3]);
     popular4ImgEl.attr("src", drinkImages[4]);
 
-    //drink name
-
     for (i = 0; i < 5; i++) {
       drinkName.push(drinksAfterInput[i].strDrink);
     }
@@ -204,27 +168,62 @@ function loadOnClick(event) {
     popular1TitleEl.text(drinkName[1]);
     popular2TitleEl.text(drinkName[2]);
     popular3TitleEl.text(drinkName[3]);
-
     popular4TitleEl.text(drinkName[4]);
 
-    //drink id variable
     for (i = 0; i < 5; i++) {
       drinkId.push(drinksAfterInput[i].idDrink);
     }
-    var idDrink = drinkId;
 
-    console.log(idDrink);
+    mainDetailsById =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId[0];
+    popular1DetailsById =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId[1];
+    popular2DetailsById =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId[2];
+    popular3DetailsById =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId[3];
+    popular4DetailsById =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId[4];
 
-
-    // console.log(data.drinks);
-    // console.log(data.drinks.length);
-    // console.log(data.drinks[0]);
-    // console.log(data.drinks[0]);
-    // console.log(data.drinks[0].idDrink);
-    // console.log(data.drinks[0].strDrink);
-
-    // function userSelectsAlcoholType()
-    // userSelectsAlcoholType();
+    $.ajax({
+      url: mainDetailsById,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+      mainPopularListEl.text(data.drinks[0].strCategory);
+      mainPopularInstructionsEl.text(data.drinks[0].strInstructions);
+    });
+    $.ajax({
+      url: popular1DetailsById,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+      popular1ListEl.text(data.drinks[0].strCategory);
+      popular1InstructionsEl.text(data.drinks[0].strInstructions);
+    });
+    $.ajax({
+      url: popular2DetailsById,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+      popular2ListEl.text(data.drinks[0].strCategory);
+      popular2InstructionsEl.text(data.drinks[0].strInstructions);
+    });
+    $.ajax({
+      url: popular3DetailsById,
+      method: "GET",
+    }).then(function (data) {
+      popular3ListEl.text(data.drinks[0].strCategory);
+      popular3InstructionsEl.text(data.drinks[0].strInstructions);
+    });
+    $.ajax({
+      url: popular4DetailsById,
+      method: "GET",
+    }).then(function (data) {
+      console.log(data);
+      popular4ListEl.text(data.drinks[0].strCategory);
+      popular4InstructionsEl.text(data.drinks[0].strInstructions);
+    });
   });
   drinksAfterInput = [];
   drinkImages = [];
@@ -233,51 +232,3 @@ function loadOnClick(event) {
 }
 
 alcoholDropdownEl.on("change", loadOnClick);
-
-
-// get drinks by ingredient (example: vodka)
-//this is lists drinks based on the ingredients
-fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka", {
-  method: "GET",
-  credentials: "same-origin",
-  redirect: "follow",
-  cache: "no-store",
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("The drinks made with vodka");
-    console.log(data);
-  });
-
-// get drinks by id (example: Bloody Mary)
-fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11113", {
-  method: "GET",
-  credentials: "same-origin",
-  redirect: "follow",
-  cache: "no-store",
-})
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log("The Bloody Mary");
-    console.log(data);
-  });
-
-//sorting info
-// https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list
-// used to sort by categories
-
-// https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list
-// used to sort by glasses
-
-//this list out the ingredients name we can use to
-// https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list
-// used to sort by ingredients
-
-// https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list
-
-// used to sort by alcoholic fillters
-
