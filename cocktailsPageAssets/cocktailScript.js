@@ -4,34 +4,43 @@ var alcoholDropdownEl = $("#alcohol-type");
 //Accessing Main Popular Recipe Card Elements
 var mainPopularImgEl = $("#main-popular-img");
 var mainPopularTitleEl = $("#main-popular-title");
-var mainPopularList1El = $("#main-popular-category");
+var mainPopularListEl = $("#main-popular-category");
+var mainPopularInstructionsEl = $("#main-popular-description");
 
 //Accessing Popular Recipe Card Elements
 
 //Card 1
 var popular1ImgEl = $("#popular1-img");
 var popular1TitleEl = $("#popular1-title");
-var popular1List1El = $("#popular1-category");
+var popular1ListEl = $("#popular1-category");
+var popular1InstructionsEl = $("#popular1-description");
+
 
 //Card 2
 var popular2ImgEl = $("#popular2-img");
 var popular2TitleEl = $("#popular2-title");
-var popular2List1El = $("#popular2-category");
+var popular2ListEl = $("#popular2-category");
+var popular2InstructionsEl = $("#popular2-description");
 
 //Card 3
 var popular3ImgEl = $("#popular3-img");
 var popular3TitleEl = $("#popular3-title");
-var popular3List1El = $("#popular3-category");
+var popular3ListEl = $("#popular3-category");
+var popular3InstructionsEl = $("#popular3-description");
+
 
 //Card 4
 var popular4ImgEl = $("#popular4-img");
 var popular4TitleEl = $("#popular4-title");
-var popular4List1El = $("#popular4-category");
+var popular4ListEl = $("#popular4-category");
+var popular4InstructionsEl = $("#popular4-description");
 
 //Accessing Random Recipe Card Elements
 var randomImgEl = $("#random-img");
 var randomTitleEl = $("#random-title");
-var randomList1El = $("#random-category");
+var randomListEl = $("#random-category");
+var randomInstructionsEl = $("#random-description");
+
 
 //waiting for variables from the html!!!
 //declare variables!!!!
@@ -71,9 +80,79 @@ fetch(
     console.log(data);
   });
 
+var randomRecipeLink;
+
+var initialRandomImgs = [];
+var initialRandomNames = [];
+var initialRandomCategories = [];
+var initialRandomInstructions = [];
+var initialRandomIds = [];
+
+var randomImg;
+var randomName;
+var randomCategory;
+var randomInstructions;
+var randomId;
+
+async function initialLoad() {
+  randomRecipeLink = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+  await $.ajax({
+    url: randomRecipeLink,
+    method: "GET",
+  }).then(function (data) {
+    randomImg = data.drinks[0].strDrinkThumb;
+    randomName = data.drinks[0].strDrink;
+    randomCategory = data.drinks[0].strCategory;
+    randomInstructions = data.drinks[0].strInstructions;
+    randomId = data.drinks[0].strIdDrink;
+
+    initialRandomImgs.push(randomImg);
+    initialRandomNames.push(randomName);
+    initialRandomCategories.push(randomCategory);
+    initialRandomInstructions.push(randomInstructions);
+    initialRandomIds.push(randomId);
+  });
+  generateInitialContent();
+}
+for (i = 0; i < 6; i++) {
+  initialLoad();
+}
+console.log(initialRandomInstructions);
+
+function generateInitialContent() {
+  mainPopularImgEl.attr("src", initialRandomImgs[0]);
+  popular1ImgEl.attr("src", initialRandomImgs[1]);
+  popular2ImgEl.attr("src", initialRandomImgs[2]);
+  popular3ImgEl.attr("src", initialRandomImgs[3]);
+  popular4ImgEl.attr("src", initialRandomImgs[4]);
+  randomImgEl.attr("src", initialRandomImgs[5]);
+
+  mainPopularTitleEl.text(initialRandomNames[0]);
+  popular1TitleEl.text(initialRandomNames[1]);
+  popular2TitleEl.text(initialRandomNames[2]);
+  popular3TitleEl.text(initialRandomNames[3]);
+  popular4TitleEl.text(initialRandomNames[4]);
+  randomTitleEl.text(initialRandomNames[5]);
+
+  mainPopularListEl.text(initialRandomCategories[0]);
+  popular1ListEl.text(initialRandomCategories[1]);
+  popular2ListEl.text(initialRandomCategories[2]);
+  popular3ListEl.text(initialRandomCategories[3]);
+  popular4ListEl.text(initialRandomCategories[4]);
+  randomListEl.text(initialRandomCategories[5]);
+
+  mainPopularInstructionsEl.text(initialRandomInstructions[0]);
+  popular1InstructionsEl.text(initialRandomInstructions[1]);
+  popular2InstructionsEl.text(initialRandomInstructions[2]);
+  popular3InstructionsEl.text(initialRandomInstructions[3]);
+  popular4InstructionsEl.text(initialRandomInstructions[4]);
+  randomInstructionsEl.text(initialRandomInstructions[5]);
+}
+
 var drinkByAlcoholTypeAPI;
 
-function loadInitial(event) {
+function loadOnClick(event) {
+
   event.preventDefault();
 
   if (alcoholDropdownEl.val() == "non-alcoholic") {
@@ -116,23 +195,26 @@ function loadInitial(event) {
     popular4ImgEl.attr("src", drinkImages[4]);
 
     //drink name
+
     for (i = 0; i < 5; i++) {
       drinkName.push(drinksAfterInput[i].strDrink);
     }
 
-    mainPopularTitleEl.text( drinkName[0]);
-    popular1TitleEl.text( drinkName[1]);
-    popular2TitleEl.text( drinkName[2]);
-    popular3TitleEl.text( drinkName[3]);
+    mainPopularTitleEl.text(drinkName[0]);
+    popular1TitleEl.text(drinkName[1]);
+    popular2TitleEl.text(drinkName[2]);
+    popular3TitleEl.text(drinkName[3]);
+
     popular4TitleEl.text(drinkName[4]);
 
     //drink id variable
     for (i = 0; i < 5; i++) {
       drinkId.push(drinksAfterInput[i].idDrink);
     }
-    var idDrink = drinkId
-    
-    console.log(idDrink)
+    var idDrink = drinkId;
+
+    console.log(idDrink);
+
 
     // console.log(data.drinks);
     // console.log(data.drinks.length);
@@ -147,10 +229,11 @@ function loadInitial(event) {
   drinksAfterInput = [];
   drinkImages = [];
   drinkName = [];
-  drinkId = []
+  drinkId = [];
 }
 
-alcoholDropdownEl.on("change", loadInitial);
+alcoholDropdownEl.on("change", loadOnClick);
+
 
 // get drinks by ingredient (example: vodka)
 //this is lists drinks based on the ingredients
@@ -195,4 +278,6 @@ fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11113", {
 // used to sort by ingredients
 
 // https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list
+
 // used to sort by alcoholic fillters
+
