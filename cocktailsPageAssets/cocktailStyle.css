@@ -1,10 +1,30 @@
-.navbar .container-fluid {
-  justify-content: flex-start;
+:root {
+  --lightBlue: #a5daeb;
+  --blue: #236477;
+  --darkBlue: #173042;
+  --grey: #cfdfda;
+  --lightGreen: #7cad3e;
+  --veryLightGreen: #9bb37c;
+  --darkGreen: #4a6c2f;
 }
-.title {
+
+body {
+  background-color: var(--grey);
+  font-family: "Archivo", sans-serif;
+}
+
+.display-1 {
+  color: white;
+  text-align: center;
   font-size: 90px;
   font-weight: 650;
-  padding-left: 30px;
+  background-color: var(--darkGreen);
+  padding: 20px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.navbar .container-fluid {
+  justify-content: flex-start;
 }
 
 .card {
@@ -22,13 +42,31 @@
 
 .sidebar {
   justify-content: flex-start;
-  font-size: 18px;
 }
 
 .selection-text {
-  padding: 10px;
   font-size: 20px;
+}
+
+#alcohol-type {
+  margin: 8px;
+}
+.nav-item {
+  padding: 5px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.nav-item,
+#alcohol-type {
+  font-size: 18px;
   font-weight: 450;
+  color: white;
+  background-color: var(--blue);
+  border-radius: 5%;
+  border-width: 2px;
+  border-color: white;
+  text-align: center;
 }
 
 .main {
