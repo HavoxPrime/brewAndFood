@@ -1,0 +1,44 @@
+:root {
+  --blue: #236477;
+  --darkBlue: #173042;
+  --grey: #cfdfda;
+  --lightGreen: #7cad3e;
+  --darkGreen: #4a6c2f;
+}
+
+body {
+  background-color: var(--grey);
+}
+
+.display-1 {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 90px;
+  font-weight: 600;
+  padding: 20px;
+  background-color: var(--darkBlue);
+  color: white;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: var(--grey);
+}
+
+.btn {
+  padding: 70px;
+  margin: 10px;
+  font-size: 65px;
+}
+
+.food-btn {
+  background-color: var(--blue);
+  color: white;
+}
+
+.drink-btn {
+  background-color: var(--lightGreen);
+  color: white;
+}
