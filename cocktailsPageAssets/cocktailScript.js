@@ -6,6 +6,7 @@ var mainPopularImgEl = $("#main-popular-img");
 var mainPopularTitleEl = $("#main-popular-title");
 var mainPopularListEl = $("#main-popular-category");
 var mainPopularInstructionsEl = $("#main-popular-description");
+
 //Accessing Popular Recipe Card Elements
 
 //Card 1
@@ -13,6 +14,7 @@ var popular1ImgEl = $("#popular1-img");
 var popular1TitleEl = $("#popular1-title");
 var popular1ListEl = $("#popular1-category");
 var popular1InstructionsEl = $("#popular1-description");
+
 
 //Card 2
 var popular2ImgEl = $("#popular2-img");
@@ -26,6 +28,7 @@ var popular3TitleEl = $("#popular3-title");
 var popular3ListEl = $("#popular3-category");
 var popular3InstructionsEl = $("#popular3-description");
 
+
 //Card 4
 var popular4ImgEl = $("#popular4-img");
 var popular4TitleEl = $("#popular4-title");
@@ -37,6 +40,7 @@ var randomImgEl = $("#random-img");
 var randomTitleEl = $("#random-title");
 var randomListEl = $("#random-category");
 var randomInstructionsEl = $("#random-description");
+
 
 //waiting for variables from the html!!!
 //declare variables!!!!
@@ -148,6 +152,7 @@ function generateInitialContent() {
 var drinkByAlcoholTypeAPI;
 
 function loadOnClick(event) {
+
   event.preventDefault();
 
   if (alcoholDropdownEl.val() == "non-alcoholic") {
@@ -189,6 +194,8 @@ function loadOnClick(event) {
     popular3ImgEl.attr("src", drinkImages[3]);
     popular4ImgEl.attr("src", drinkImages[4]);
 
+    //drink name
+
     for (i = 0; i < 5; i++) {
       drinkName.push(drinksAfterInput[i].strDrink);
     }
@@ -197,6 +204,7 @@ function loadOnClick(event) {
     popular1TitleEl.text(drinkName[1]);
     popular2TitleEl.text(drinkName[2]);
     popular3TitleEl.text(drinkName[3]);
+
     popular4TitleEl.text(drinkName[4]);
 
     //drink id variable
@@ -206,6 +214,7 @@ function loadOnClick(event) {
     var idDrink = drinkId;
 
     console.log(idDrink);
+
 
     // console.log(data.drinks);
     // console.log(data.drinks.length);
@@ -224,6 +233,7 @@ function loadOnClick(event) {
 }
 
 alcoholDropdownEl.on("change", loadOnClick);
+
 
 // get drinks by ingredient (example: vodka)
 //this is lists drinks based on the ingredients
@@ -268,4 +278,6 @@ fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11113", {
 // used to sort by ingredients
 
 // https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list
+
 // used to sort by alcoholic fillters
+
